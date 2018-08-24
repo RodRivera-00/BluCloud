@@ -27,7 +27,7 @@ app.get('/login', function (req, res) {
 
 app.get('/logout', function (req, res) {
     req.session.destroy();
-    res.redirect('/login')
+    res.redirect('/wallet')
 })
 
 app.get('/register', function (req, res) {
@@ -52,7 +52,7 @@ app.get('/wallet', function (req, res) {
 app.get('/dashboard', function (req, res) {
     if (!req.session.logged) {
         req.session.destroy();
-        res.redirect('/login')
+        res.redirect('/wallet')
     } else {
         console.log(req.session.type)
         if(req.session.type == 1){
@@ -68,7 +68,7 @@ app.get('/dashboard', function (req, res) {
 app.get('/settings', function (req, res) {
     if (!req.session.logged) {
         req.session.destroy();
-        res.redirect('/login')
+        res.redirect('/wallet')
     } else {
         res.sendFile('sites/dashboard/profile.html', {
             root: __dirname
@@ -79,7 +79,7 @@ app.get('/settings', function (req, res) {
 app.get('/transhistory', function (req, res) {
     if (!req.session.logged) {
         req.session.destroy();
-        res.redirect('/login')
+        res.redirect('/wallet')
     } else {
         res.sendFile('sites/dashboard/transhistory.html', {
             root: __dirname
@@ -90,7 +90,7 @@ app.get('/transhistory', function (req, res) {
 app.get('/assets/:id', function (req, res) {
     if (!req.session.logged) {
         req.session.destroy();
-        res.redirect('/login')
+        res.redirect('/wallet')
     } else {
         res.sendFile('sites/dashboard/asset.html', {
             root: __dirname
@@ -118,7 +118,7 @@ app.get('/admin', function (req, res) {
         })
     }else{
         req.session.destroy();
-        res.redirect('/login')
+        res.redirect('/wallet')
     }
 })
 app.get('/admin/user/:id', function (req, res) {
@@ -128,7 +128,7 @@ app.get('/admin/user/:id', function (req, res) {
         })
     }else{
         req.session.destroy();
-        res.redirect('/login')
+        res.redirect('/wallet')
     }
 })
 //API
