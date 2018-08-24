@@ -54,7 +54,6 @@ app.get('/dashboard', function (req, res) {
         req.session.destroy();
         res.redirect('/wallet')
     } else {
-        console.log(req.session.type)
         if(req.session.type == 1){
             res.redirect('/admin/')
         }else{
@@ -121,7 +120,17 @@ app.get('/admin', function (req, res) {
         res.redirect('/wallet')
     }
 })
-app.get('/admin/user/:id', function (req, res) {
+app.get('/admin/users', function (req, res) {
+    if(req.session.logged && req.session.type == 1){
+        res.sendFile('sites/admin/admin2.html', {
+            root: __dirname
+        })
+    }else{
+        req.session.destroy();
+        res.redirect('/wallet')
+    }
+})
+app.get('/admin/users/:id', function (req, res) {
     if(req.session.logged && req.session.type == 1){
         res.sendFile('sites/admin/admin2.html', {
             root: __dirname
@@ -196,6 +205,14 @@ app.get('/api/verify/:code', function (req, res) {
                 })
             }
         })
+    } else {
+        res.redirect("/dashboard")
+    }
+})
+
+app.get('/api/admin/', function (req, res) {
+    if (!req.session.logged && req.session.type == 1) {
+        
     } else {
         res.redirect("/dashboard")
     }
