@@ -54,6 +54,7 @@ app.get('/dashboard', function (req, res) {
         req.session.destroy();
         res.redirect('/login')
     } else {
+        console.log(req.session.type)
         if(req.session.type == 1){
             res.redirect('/admin/')
         }else{
@@ -187,7 +188,7 @@ app.get('/api/verify/:code', function (req, res) {
     if (!req.session.logged) {
         functions.api_verifyemail(req.params.code, function (result) {
             if (result) {
-                res.redirect('/login')
+                res.redirect('/wallet')
             } else {
                 res.send({
                     success: false,

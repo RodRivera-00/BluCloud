@@ -147,7 +147,7 @@ module.exports = {
                             })) {
                             req.session.logged = true
                             req.session._id = user._id
-                            req.session.type = user.type
+                            req.session.type = user.account_type
                             callback({
                                 success: true,
                                 message: "Logged in successfully. Redirecting..."
@@ -161,7 +161,7 @@ module.exports = {
                     } else {
                         req.session.logged = true
                         req.session._id = user._id 
-                        req.session.type = user.type
+                        req.session.type = user.account_type
                         callback({
                             success: true,
                             message: "Logged in successfully. Redirecting..."
