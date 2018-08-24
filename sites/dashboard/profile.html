@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>BluCloud | Profile</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- Favicon -->
+    <link rel="icon" href="http://via.placeholder.com/32x32" sizes="32x32" type="image/png">
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/style-responsive.css" rel="stylesheet" />
+    <link href="assets/css/default.css" rel="stylesheet" id="theme" />
+    <link href="assets/css/smart_wizard.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <link rel="stylesheet" href="assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-editable/bootstrap-editable.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <!-- ================== END PAGE LEVEL STYLE ================== -->
+</head>
+
+<body class="dark_version">
+    <!-- begin #page-loader -->
+    <div class="preloader">
+        <div class="loading">
+            <h2>
+                Loading...
+            </h2>
+            <span class="progress"></span>
+        </div>
+    </div>
+    <!-- end #page-loader -->
+
+    <!-- begin #pvr-container -->
+    <div id="pvr-container" class="fade fixed_sidebar fixed_header">
+        <!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin navbar-collapse -->
+                <div class="collapse navbar-collapse pull-left" id="top-navbar">
+                    <ul class="nav navbar-nav">
+                        <li data-click="sidebar-minify">
+                            <a href="javascript:void(0)">
+                                <i class="material-icons">menu</i>
+                            </a>
+                        </li>
+                        <li class="page_heading">
+                            <h4>BluCloud Dashboard</h4>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end navbar-collapse -->
+
+                <!-- begin header navigation right -->
+                <ul class="nav navbar-nav navbar-right hidden-xs">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">
+                            <i class="material-icons">notifications</i>
+                            <span class="label">0</span>
+                        </a>
+                        <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                            <li class="dropdown-header">Notifications</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown navbar-user">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="material-icons m-r-5">account_box</i>
+                            <span class="hidden-xs" id="account-name">N/A</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInDown">
+                            <li class="arrow"></li>
+                            <li>
+                                <a href="/logout">
+                                    <i class="material-icons">power_settings_new</i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end header navigation right -->
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+
+        <!-- begin #sidebar -->
+        <div id="sidebar" class="sidebar">
+            <!-- begin sidebar scrollbar -->
+            <div data-scrollbar="true" data-height="100%">
+                <!-- begin sidebar nav -->
+                <ul class="nav">
+                    <li>
+                        <a href="/dashboard">
+                            <i class="material-icons">home</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:void(0)">
+                            <b class="caret pull-right"></b>
+                            <i class="material-icons">layers</i>
+                            <span>Assets</span>
+                        </a>
+                        <ul class="sub-menu" id="sidebar-asset">
+
+                        </ul>
+                    </li>
+                    <li class="has-sub" disabled>
+                        <a href="#">
+                            <i class="material-icons">library_add</i>
+                            <span>Exchange</span>
+                        </a>
+                    </li>
+                    <li class="has-sub active">
+                        <a href="#">
+                            <i class="material-icons">settings</i>
+                            <span>Account Settings</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="material-icons">fingerprint</i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- end sidebar nav -->
+            </div>
+            <!-- end sidebar scrollbar -->
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- end #sidebar -->
+
+        <!-- begin #content -->
+        <div id="content" class="content dashboard_v3">
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-offset-2 col-md-8">
+                    <!-- begin panel -->
+                    <div class="panel panel-pvr">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Account Settings</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="#" method="POST" id="setting">
+                                <div class="form-group col-md-6">
+                                    <label>First Name</label>
+                                    <input name="fname" class="form-control" placeholder="First Name" id="fname" type="text" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Last Name</label>
+                                    <input name="lname" class="form-control" placeholder="Last Name" id="lname" type="text" />
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Email Address</label>
+                                    <input name="email" class="form-control" placeholder="Email Address" id="email" type="email" />
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Emergency Wallet</label>
+                                    <input name="ewallet" class="form-control" placeholder="Emergency Wallet Address (BTC Address Only)" type="text" id="emergency"
+                                    />
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Birthdate</label>
+                                    <input id="bday" type="text" class="form-control" placeholder="Birthdate" name="bday" required>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Country</label>
+                                    <select class="form-control" id="country" name="country" required>
+                                        <option value="" hidden="">Select Country</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="btn btn-sm btn-success pull-left m-r-5">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-offset-2 col-md-8">
+                    <!-- begin panel -->
+                    <div class="panel panel-pvr">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Change Password</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="#" method="POST" id="password">
+                                <div class="form-group col-md-6">
+                                    <label>New Password (Leave blank for it to be remain unchanged)</label>
+                                    <input name="npass" class="form-control" placeholder="New Password" type="password" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Confirm New Password</label>
+                                    <input name="cnpass" class="form-control" placeholder="Confirm New Password" type="password" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Current Password</label>
+                                    <input name="current" class="form-control" placeholder="Current Password" type="password" required/>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="btn btn-sm btn-success pull-left m-r-5">Change Password</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-offset-2 col-md-8">
+                    <!-- begin panel -->
+                    <div class="panel panel-pvr">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Two-Factor Authentication</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group col-md-12">
+                                <a href="#modal_enable" data-toggle="modal" id="modal-2fa">
+                                    <button type="submit" id="enable-2fa" class="btn btn-sm btn-success pull-left m-r-5"></button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <div class="modal fade" id="modal_enable" style="display: none;">
+                <div class="col-md-12" style="padding-top: 30px;">
+                    <div class="modal-content col-md-4 col-md-offset-4">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div id="smartwizard" class="col-md-12">
+                                    <ul>
+                                        <li class="">
+                                            <a href="#step-1">Scan QR
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#step-2">Confirm
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div>
+                                        <div id="step-1" class="">
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12" style="text-align: center;">
+                                                    <p>Scan this QR code on your Google Authenticator App on IOS or Android.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-md-offset-3">
+                                                    <img src="" id="qrimage" width=100%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="step-2" class="">
+                                            <form id="twofauth">
+                                                <div class="col-md-12 col-sm-12" style="text-align: center;">
+                                                    <p>Enter the 2FA Code shown in your Google Authenticator App.
+                                                    </p>
+                                                </div>
+                                                <div class="form-group col-md-6 col-md-offset-3">
+                                                    <label>2FA Code</label>
+                                                    <input name="twofa" class="form-control" placeholder="2FA Code" required/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <a href="javascript:void(0)" data-dismiss="modal">
+                                    <button class="btn btn-white pull-left" type="button" data-dismiss="modal">Close</button>
+                                </a>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-success" id="prev-btn">Previous</button>
+                                    <button type="button" class="btn btn-success" id="next-btn">Next</button>
+                                    <button type="button" class="btn btn-success" id="twofasubmit">Finish</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal_disable" style="display: none;">
+                <div class="col-md-12" style="padding-top: 30px;">
+                    <div class="modal-content col-md-4 col-md-offset-4">
+                        <div class="modal-body">
+                            <div class="row">
+                                <form id="disable-2fa">
+                                    <div class="col-md-12 col-sm-12" style="text-align: center;">
+                                        <p>Enter the 2FA Code shown in your Google Authenticator App.
+                                        </p>
+                                    </div>
+                                    <div class="form-group col-md-6 col-md-offset-3">
+                                        <label>2FA Code</label>
+                                        <input name="twofa" class="form-control" placeholder="2FA Code" required/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <a href="javascript:void(0)" data-dismiss="modal">
+                                    <button class="btn btn-white pull-left" type="button" data-dismiss="modal">Close</button>
+                                </a>
+                                <button type="button" class="btn btn-danger" id="disablesubmit">Disable 2FA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end #content -->
+
+        <!-- begin scroll to top btn -->
+        <a href="javascript:void(0)" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/plugins/jquery/jquery-1.12.4.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-migrate-1.4.1.min.js"></script>
+    <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+<script src="assets/crossbrowserjs/html5shiv.js"></script>
+<script src="assets/crossbrowserjs/respond.min.js"></script>
+<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="assets/plugins/jquery-cookie/js.cookie.js"></script>
+    <script src="assets/js/app.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="assets/js/jquery.smartWizard.min.js"></script>
+    <script src="assets/js/every.js"></script>
+    <script src="assets/plugins/bootstrap-notify/bootstrap-notify.js"></script>
+    <script src="assets/js/serialize.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+
+</html>

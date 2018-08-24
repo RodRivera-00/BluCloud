@@ -1,0 +1,64 @@
+::selection {
+  background-color:#FF416C;
+  color: #fff;
+}
+::-moz-selection {
+  background-color:#FF416C;
+  color: #fff;
+}
+
+
+
+.tab-style-1 .nav .nav-item a,
+.more-btn:hover,
+.more-btn:focus,
+.more-btn:active,
+.theme-color {
+  color:#FF416C;
+}
+
+
+.theme-after-bg:after,
+.btn-theme,
+.theme-bg {
+  background:#FF416C;
+}
+
+
+.feature-box-01:after,
+.feature-box:hover,
+.btn-theme {
+  border-color:#FF416C;
+}
+
+.tab-style-1 .nav .nav-item a.active,
+.fixed-header.header-01,
+.owl-dots .owl-dot.active,
+.m-btn-theme, 
+.title-section h2:after,
+.m-btn-white:hover,
+.theme-after:after,
+.theme-g-bg{
+	background: #FF416C;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+/*Reverce*/
+.m-btn-theme:hover{
+	background: #FF4B2B;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FF416C, #FF4B2B);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FF416C, #FF4B2B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.m-btn-theme:hover,
+.m-btn-white:hover {
+  box-shadow: 0px 15px 20px rgba(5, 117, 230, 0.4);
+}
+
+@media (max-width: 991px){
+  .header {
+    background:#FF416C;
+  }
+}

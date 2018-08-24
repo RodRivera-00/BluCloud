@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>BluCloud | Wallet </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- Favicon -->
+    <link rel="icon" href="http://via.placeholder.com/32x32" sizes="32x32" type="image/png">
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/default.css" rel="stylesheet" id="theme" />
+    <link rel="stylesheet" href="assets/css/style3.css">
+
+    <!-- ================== END BASE CSS STYLE ================== -->
+</head>
+
+<body class="dark_version">
+    <!-- begin #page-loader -->
+    <div class="preloader">
+        <div class="loading">
+            <h2>
+                Loading...
+            </h2>
+            <span class="progress"></span>
+        </div>
+    </div>
+    <!-- end #page-loader -->
+
+    <!-- begin #pvr-container -->
+    <div id="pvr-container" class="fade fixed_sidebar fixed_header">
+        <!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin navbar-collapse -->
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="col-md-4 page_heading">
+                            <h4>BluCloud Wallet</h4>
+                        </div>
+                        <div class="col-md-3 col-md-offset-5 page_heading">
+                            <div class="col-md-4 text-center">
+                                <a href="#" id="click-portfolio">
+                                    <h5>Portfolio</h5>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="#" id="click-login">
+                                    <h5>Login</h5>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="#" id="click-register">
+                                    <h5>Register</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end navbar-collapse -->
+
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+
+
+        <!-- begin #content -->
+        <div class="login-layout align-items-center" id="login-form">
+            <div class="login-layout__sidebar login-area">
+                <div class="login-layout__content-wrap">
+                    <div class="login-layout__content" style="background: #262e31; width:80%;">
+                        <div class="login-layout__content2" style="background: #262e31;width:auto;">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <img src="images/logo.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <form id="login">
+                            <div class="form-group">
+                                <label>Email address</label>
+                                <input type="email" class="form-control" placeholder="Email Address" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" placeholder="Password" name="pass">
+                            </div>
+                            <div class="form-group">
+                                <label>Two-Factor Authentication</label>
+                                <input type="text" class="form-control" placeholder="Put 2FA code if enabled" name="twofa">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="row">
+                                    <div class="forget-pass col-sm-9 p-0">
+                                        <a href="#">Forgot Password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block">LOGIN</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-layout align-items-center" id="register-form">
+            <div class="login-layout__sidebar login-area">
+                <div class="login-layout__content-wrap">
+                    <div class="login-layout__content" style="background: #262e31; width:80%;">
+                        <div class="login-layout__content2" style="background: #262e31;width:auto;">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <img src="images/logo.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+
+                        </div>
+                        <form id="register">
+                            <div class="row">
+                                <label class="col-md-6">First Name</label>
+                                <label class="col-md-6">Last Name</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="First Name" name="fname" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Last Name" name="lname" required>
+                                </div>
+
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Country</label>
+                                    <select class="form-control" style="height: 50px;" id="country" name="country" required>
+                                        <option value="" hidden="">Select Country</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Enter Email" name="email" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Confirm Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Confirm Email Address" name="cemail" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" name="pass" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control" placeholder="Confirm Password" name="cpass" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Birthdate</label>
+                                    <input id="bday" type="text" class="form-control" placeholder="Birthdate" name="bday" required>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row text-center">
+                                <div class="col-md-12">
+                                    <input class="" type="checkbox" checked="" name="ann"> Get announcements, recommendations, and updates about Apple products, services, and
+                                    software.
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-md-12">
+                                    <input class="" type="checkbox" checked="" name="news"> Get new releases, News, exclusive content, special offers, and recommendations for blockchain,
+                                    and more.
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-md-12">
+                                    <input class="" type="checkbox" checked="" name="stories"> Get the best stories and recommendations from Apple news.</div>
+                            </div>
+                            <br>
+                            <button class="btn btn-primary btn-block login-submit">REGISTER</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <video autoplay loop id="bg-vid" class="video-foreground" muted plays-inline>
+            <source src="videos/output.mp4" type="video/mp4">
+        </video>
+
+        <!-- end #content -->
+
+        <!-- begin scroll to top btn -->
+        <a href="javascript:void(0)" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/plugins/jquery/jquery-1.12.4.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-migrate-1.4.1.min.js"></script>
+    <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/serialize.js"></script>
+    <script src="assets/js/every.js"></script>
+    <script src="assets/plugins/toastr/toastr.min.js"></script>
+    <script src="assets/plugins/bootstrap-notify/bootstrap-notify.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="assets/js/every.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.grid-cols-head {
+    padding: 10px 0px;
+    font-weight: 600;
+}
+
+.btn-group-blu, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}

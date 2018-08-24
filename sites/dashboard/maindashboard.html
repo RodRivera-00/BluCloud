@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>BluCloud | Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- Favicon -->
+    <link rel="icon" href="http://via.placeholder.com/32x32" sizes="32x32" type="image/png">
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/style-responsive.css" rel="stylesheet" />
+    <link href="assets/css/default.css" rel="stylesheet" id="theme" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <link rel="stylesheet" href="assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-editable/bootstrap-editable.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <!-- ================== END PAGE LEVEL STYLE ================== -->
+</head>
+
+<body class="dark_version">
+    <!-- begin #page-loader -->
+    <div class="preloader">
+        <div class="loading">
+            <h2>
+                Loading...
+            </h2>
+            <span class="progress"></span>
+        </div>
+    </div>
+    <!-- end #page-loader -->
+
+    <!-- begin #pvr-container -->
+    <div id="pvr-container" class="fade fixed_sidebar fixed_header">
+        <!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin navbar-collapse -->
+                <div class="collapse navbar-collapse pull-left" id="top-navbar">
+                    <ul class="nav navbar-nav">
+                        <li data-click="sidebar-minify">
+                            <a href="javascript:void(0)">
+                                <i class="material-icons">menu</i>
+                            </a>
+                        </li>
+                        <li class="page_heading">
+                            <h4>BluCloud Dashboard</h4>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end navbar-collapse -->
+
+                <!-- begin header navigation right -->
+                <ul class="nav navbar-nav navbar-right hidden-xs">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">
+                            <i class="material-icons">notifications</i>
+                            <span class="label">0</span>
+                        </a>
+                        <ul class="dropdown-menu media-list pull-right animated fadeInDown">
+                            <li class="dropdown-header">Notifications</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown navbar-user">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="material-icons m-r-5">account_box</i>
+                            <span class="hidden-xs" id="account-name">N/A</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInDown">
+                            <li class="arrow"></li>
+                            <li>
+                                <a href="/logout">
+                                    <i class="material-icons">power_settings_new</i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end header navigation right -->
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+
+        <!-- begin #sidebar -->
+        <div id="sidebar" class="sidebar">
+            <!-- begin sidebar scrollbar -->
+            <div data-scrollbar="true" data-height="100%">
+                <!-- begin sidebar nav -->
+                <ul class="nav">
+                    <li class="active">
+                        <a href="#">
+                            <i class="material-icons">home</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:void(0)">
+                            <b class="caret pull-right"></b>
+                            <i class="material-icons">layers</i>
+                            <span>Assets</span>
+                        </a>
+                        <ul class="sub-menu" id="sidebar-asset">
+
+                        </ul>
+                    </li>
+                    <li class="has-sub" disabled>
+                        <a href="#">
+                            <i class="material-icons">library_add</i>
+                            <span>Exchange</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="/settings">
+                            <i class="material-icons">settings</i>
+                            <span>Account Settings</span>
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="material-icons">fingerprint</i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- end sidebar nav -->
+            </div>
+            <!-- end sidebar scrollbar -->
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- end #sidebar -->
+
+        <!-- begin #content -->
+        <div id="content" class="content dashboard_v3">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card card-shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="bg-pink text-center pvr-icon-box">
+                                        <i class="icon-people text-light f-s-24"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <h5 class="mt-1 mb-0" data-typeit="true" id="asset-value"></h5>
+                                    <p class="mb-0">Total Asset Value</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card card-shadow ">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-3 col-xs-3">
+                                    <span class="bg-blue text-center pvr-icon-box">
+                                        <i class="icon-basket-loaded text-light f-s-24"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <h5 class="mt-1 mb-0" data-typeit="true" id="24h-usd"></h5>
+                                    <p class="mb-0">24h Profit</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card card-shadow">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-3 col-xs-3">
+                                    <span class="bg-yellow text-center pvr-icon-box">
+                                        <i class="icon-handbag text-light f-s-24"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <h5 class="mt-1 mb-0" data-typeit="true" id="24h-per"></h5>
+                                    <p class="mb-0">24h Profit Percentage</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card card-shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-3 col-xs-3">
+                                    <span class="bg-purple text-center pvr-icon-box">
+                                        <i class="icon-trophy text-light f-s-24"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <h5 class="mt-1 mb-0" data-typeit="true" id="profit-coin"></h5>
+                                    <p class="mb-0">Most Profitable Coin (24h)
+                                        <span class="float-right text-success"> </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- begin row -->
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                </div>
+            </div>
+            <!-- end row -->
+            <!-- begin row -->
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                </div>
+            </div>
+            <!-- end row -->
+            <!-- begin row -->
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                </div>
+            </div>
+            <!-- end row -->
+            <!-- begin row -->
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                </div>
+            </div>
+            <!-- end row -->
+            <!-- begin row -->
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                            
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+                </div>
+            </div>
+            <!-- end row -->
+            <!-- begin row -->
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <!-- begin col-3 -->
+                    <a href="" class="asset-link">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget widget-stats p-0 zoom_in">
+                                <div class="p-15 p-b-0">
+                                    <div class="stats-icon">
+                                        <img src="" height="42px" class="asset-logo" />
+                                    </div>
+                                    <div class="stats-info asset-details">
+                                        <h4 data-typeit="true"></h4>
+                                        <p></p>
+                                        <small class="m-b-15"></small>
+                                        <br />
+                                        <small class="m-b-15 profiteer">24h:
+
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 sparkline_chart">
+                                    <canvas height="80" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end col-3 -->
+
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end #content -->
+
+        <!-- begin scroll to top btn -->
+        <a href="javascript:void(0)" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/plugins/jquery/jquery-1.12.4.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-migrate-1.4.1.min.js"></script>
+    <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+<script src="assets/crossbrowserjs/html5shiv.js"></script>
+<script src="assets/crossbrowserjs/respond.min.js"></script>
+<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="assets/plugins/jquery-cookie/js.cookie.js"></script>
+    <script src="assets/plugins/pace/pace.min.js"></script>
+    <script src="assets/plugins/chartjs/Chart.min.js"></script>
+    <script src="assets/plugins/typeit/typeit.js"></script>
+    <script src="assets/plugins/countup/countUp.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="assets/plugins/moment/moment.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.js"></script>
+    <script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+    <script src="assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+    <script src="assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="assets/plugins/bootstrap-editable/bootstrap-editable.js"></script>
+    <script src="assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="assets/plugins/highcharts/highcharts.js"></script>
+    <script src="assets/js/every.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+
+</html>
