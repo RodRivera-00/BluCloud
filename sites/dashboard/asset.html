@@ -110,7 +110,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="has-sub active" >
+                    <li class="has-sub active">
                         <a href="javascript:void(0)">
                             <b class="caret pull-right"></b>
                             <i class="material-icons">layers</i>
@@ -149,7 +149,7 @@
         <!-- begin #content -->
         <div id="content" class="content dashboard_v3">
             <div class="row ">
-                <div class="col-md-6">
+                <div class="col-md-6 col-md-offset-3">
                     <div class="col-md-6">
                         <div class="card card-shadow">
                             <div class="card-body">
@@ -249,24 +249,16 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12" style="height:100%">
                     <!-- begin col-6 -->
                     <div class="col-md-12">
                         <!-- begin panel -->
                         <div class="panel panel-pvr">
-                            <div class="panel-heading">
-                                <h4 class="panel-title" id="chart-head">
-                                    <span class="asset-sym"></span> Price (1 Month)</h4>
-                            </div>
-                            <div class="panel-body">
-                                <div class="p-0 height-200" id="hero-graph">
-                                </div>
-                            </div>
+                            <div id="tv_chart_container"></div>
                         </div>
                         <!-- end panel -->
                     </div>
                 </div>
-
                 <!-- #modal-form Withdraw-->
                 <div class="modal fade" id="modal_form_withdraw" style="display: none;">
                     <div class="col-md-12" style="padding-top: 30px;">
@@ -301,7 +293,9 @@
                                             </label>
                                         </div>
                                         <p class="p-xtra">
-                                            <i class="fa fa-exclamation-triangle" style="padding-right: 3px; font-size: 15px; color: #ff9800"></i> Before you withdraw triple-check the withdrawal address is correct We cannot
+                                            <i class="fa fa-exclamation-triangle" style="padding-right: 3px; font-size: 15px; color: #ff9800"></i>
+                                            Before you withdraw triple-check the withdrawal address is correct We
+                                            cannot
                                             reverse any transfer once it's submitted to the network.</p>
 
 
@@ -335,7 +329,8 @@
                                 <div class="row">
                                     <div class="col-md-12" style="text-align: center;">
                                         <p class="p-small">
-                                            <b id="asset-name1">Bitcoin</b> account transfer any amount to the following address:</p>
+                                            <b id="asset-name1">Bitcoin</b> account transfer any amount to the
+                                            following address:</p>
                                         <h3 id="deposit_address1"></h3>
                                         <br>
                                     </div>
@@ -343,22 +338,27 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="center">
-                                            <img style="width: 100%" id="qr-code" src="http://via.placeholder.com/200x200" alt="">
+                                            <img style="width: 100%" id="qr-code" src="http://via.placeholder.com/200x200"
+                                                alt="">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
-                                        <button class="btn btn-success btn-block-btc col-md-12" data-clipboard-action="copy" data-clipboard-target="#deposit_address1">Copy to clipboard
+                                        <button class="btn btn-success btn-block-btc col-md-12" data-clipboard-action="copy"
+                                            data-clipboard-target="#deposit_address1">Copy to clipboard
                                             <br>
                                             <p class="p-xs" id="deposit_address2"></p>
                                         </button>
                                         <div class="row">
                                             <div class="col-md-12    col-sm-6">
-                                                <p class="p-xs">• Deposit to this address anytime - funds will be credited to your account
+                                                <p class="p-xs">• Deposit to this address anytime - funds will be
+                                                    credited to your account
                                                     automatically.
                                                 </p>
                                                 <p class="p-xs">• 1 confirmation(s) is required for most transactions.</p>
-                                                <p class="p-xs">• If your deposit gets confirmed in the blockchain, but is not detected by
-                                                    the system, send an email to support@blucloud.com, include your email
+                                                <p class="p-xs">• If your deposit gets confirmed in the blockchain, but
+                                                    is not detected by
+                                                    the system, send an email to support@blucloud.com, include your
+                                                    email
                                                     and txid.</p>
                                             </div>
                                         </div>
@@ -427,7 +427,11 @@
         <script src="../assets/plugins/pace/pace.min.js"></script>
         <script src="../assets/plugins/typeit/typeit.js"></script>
         <script src="../assets/plugins/countup/countUp.min.js"></script>
+        <script type="text/javascript" src="../charting_library/charting_library.min.js"></script>
+        <script type="text/javascript" src="../datafeeds/udf/dist/polyfills.js"></script>
+        <script type="text/javascript" src="../datafeeds/udf/dist/bundle.js"></script>
         <script src="../assets/js/app.js"></script>
+
         <!-- ================== END BASE JS ================== -->
 
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
